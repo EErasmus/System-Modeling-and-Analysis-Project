@@ -13,6 +13,8 @@ drive.mount('/content/drive')
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import sklearn as skl
+from sklearn.model_selection import train_test_split
 
 dateparse = lambda dates: pd.datetime.strptime(dates, '%Y-%m-%d')
 data = pd.read_csv('/content/drive/My Drive/Colab Notebooks/a.us.txt',sep=',', index_col='Date', parse_dates=['Date'], date_parser=dateparse).fillna(0)
@@ -43,3 +45,6 @@ df_close.plot(style='k.')
 plt.title('Scatter plot of closing price')
 plt.show()
 data.shape
+
+train, test = train_test_split(data, test_size=0.33)
+train,test
